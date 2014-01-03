@@ -1,5 +1,5 @@
 module Panoply
-  module Core
+  module Components
     class Organization
     end
   end

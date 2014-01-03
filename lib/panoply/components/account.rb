@@ -1,5 +1,5 @@
 module Panoply
-  module Core
+  module Components
     class Account
     end
   end

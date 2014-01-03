@@ -1,5 +1,5 @@
 module Panoply
-  module Core
+  module Components
     class Schedule
     end
   end

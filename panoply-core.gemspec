@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'panoply/core/version'
+require 'panoply/version'
 
 Gem::Specification.new do |gem|
   gem.name          = "panoply-core"
-  gem.version       = Panoply::Core::VERSION
+  gem.version       = Panoply::VERSION
   gem.authors       = ["Joseph McCormick"]
   gem.email         = ["esmevane@gmail.com"]
   gem.description   = %q{Basic configuration loader}

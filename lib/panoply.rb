@@ -1,3 +1,3 @@
 module Panoply
-  autoload :Core, 'panoply/core'
+  autoload :Components, 'panoply/components'
 end
