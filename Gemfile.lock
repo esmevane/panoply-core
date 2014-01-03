@@ -1,8 +1,32 @@
+PATH
+  remote: .
+  specs:
+    panoply-core (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
+    coderay (1.1.0)
+    docile (1.1.1)
+    method_source (0.8.2)
+    minitest (4.7.5)
+    multi_json (1.8.2)
+    pry (0.9.12.4)
+      coderay (~> 1.0)
+      method_source (~> 0.8)
+      slop (~> 3.4)
+    simplecov (0.8.2)
+      docile (~> 1.1.0)
+      multi_json
+      simplecov-html (~> 0.8.0)
+    simplecov-html (0.8.0)
+    slop (3.4.7)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  minitest (~> 4.3)
+  panoply-core!
+  pry (~> 0.9)
+  simplecov (~> 0.8)

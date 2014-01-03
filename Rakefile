@@ -1,8 +1,9 @@
-require 'rake'
+require 'bundler/gem_tasks'
 require 'rake/testtask'
 
 Rake::TestTask.new do |task|
-  task.test_files = Dir.glob('spec/**/*_spec.rb')
+  %w(spec lib).each { |source| task.libs << source }
+  task.pattern = "spec/**/*_spec.rb"
 end
 
 task default: [ :test ]

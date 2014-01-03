@@ -1,5 +1,5 @@
-require_relative '../spec_helper'
-require_relative '../../lib/panoply/conversation'
+require 'spec_helper'
+require 'panoply/core/conversation'
 
-describe Panoply::Conversation do
+describe Panoply::Core::Conversation do
 end

@@ -1,5 +1,5 @@
-require_relative '../spec_helper'
-require_relative '../../lib/panoply/organization'
+require 'spec_helper'
+require 'panoply/core/organization'
 
-describe Panoply::Organization do
+describe Panoply::Core::Organization do
 end

@@ -1,5 +1,5 @@
-require_relative '../spec_helper'
-require_relative '../../lib/panoply/calendar'
+require 'spec_helper'
+require 'panoply/core/calendar'
 
-describe Panoply::Calendar do
+describe Panoply::Core::Calendar do
 end

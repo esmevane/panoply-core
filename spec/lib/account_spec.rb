@@ -1,5 +1,5 @@
-require_relative '../spec_helper'
-require_relative '../../lib/panoply/account'
+require 'spec_helper'
+require 'panoply/core/account'
 
-describe Panoply::Account do
+describe Panoply::Core::Account do
 end

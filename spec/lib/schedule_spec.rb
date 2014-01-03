@@ -1,5 +1,5 @@
-require_relative '../spec_helper'
-require_relative '../../lib/panoply/schedule'
+require 'spec_helper'
+require 'panoply/core/schedule'
 
-describe Panoply::Schedule do
+describe Panoply::Core::Schedule do
 end
