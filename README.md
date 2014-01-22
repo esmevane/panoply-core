@@ -10,17 +10,11 @@
 
 View, search, respond to and manage message threads.
 
-When you retrieve messages using a conversation object, it returns a `Panoply::Collections::Threads` object that could contain zero or more `Panoply::Models::Thread` objects.
+When you retrieve messages using a conversation object, it returns a `Panoply::Collections::Threads` object that could contain zero or more `Panoply::Models::Thread` objects.  The conversation object keeps these threads scoped to the account object (a `Panoply::Components::Account` instance) used to initialize it.
 
 `Panoply::Models::Thread` objects are designed to contain all of the messages within a thread's lifespan, in order of creation.
 
 #### Create conversation object
-
-The Conversations object assumes that you will want to scope all of its searches to a specific object, either a `Panoply::Account` or `Panoply::Organization` instance is used to retrieve messages.
-
-If an `Account` object is supplied, then the threads are scoped to the recipient account.
-
-If an `Organization` object is supplied, then the threads are scoped to only messages addressed to an entire organization.
 
 ```ruby
 conversations = Panoply::Components::Conversations.new(account)
@@ -81,19 +75,15 @@ conversations.search(response: "Rejections")
 # By term
 conversations.search(containing: "out of town")
 # => Panoply::Collections::Threads object
-
-# By sent time (value)
-conversations.search(sent_before: 1.day.from_now)
-conversations.search(sent_after: 1.day.from_now)
-conversations.search(sent_within: 1.day.from_now..1.week.from_now)
-# => Panoply::Collections::Threads object
-
-# By requested time (value)
-conversations.search(request_before: 1.day.from_now)
-conversations.search(request_after: 1.day.from_now)
-conversations.search(request_within: 1.day.from_now..1.week.from_now)
-# => Panoply::Collections::Threads object
 ```
+
+##### TODO
+
+* Retrieve conversations by time sent
+* Retrieve conversations by time requested (for displaying when a specific Calendar date)
+* Initialize conversations with an Organization object (where recipients can be any of the organization members)
+* Recording and utilizing actions - how do I implement the knowledge of actionable features on an individual message?  How does that float up to the parent thread model?  Or the parent threads collection?
+* Ordering threads by different signals
 
 #### Retrieve a single thread
 
@@ -137,6 +127,16 @@ thread.negotiate(time: new_suggested_time)
 ```
 
 #### Send messages to users
+
+##### TODO
+* Send bare message
+* Send group message
+* Send organization message
+* Send actionable message (Rejectable, Approvable, Negotiable)
+* Forward a message
+* Actionable messages probably have an actions hstore field, or maybe just an array as in other parts of the message schema.  Does this mean I need to come up with some sort of paper trail / history / undoable feature for messages?  I.E., send a rejection and then undo it?
+* It seems like undoing is a big deal here UX-wise, I don't see why I shouldn't start out with versions.  I've heard the memory hog concept, but maybe fixing that is as simple as wiping out versions older than 30 seconds.
+* Every time a message is sent within a thread, all messages within that thread need to have their thread_ids updated.  I am thinking that there is an opportunity for a reusable Panoply::Utilities::Ancestry module here which I can use to take a data object and criteria and return a manageable list of IDs.
 
 ```ruby
 thread.reply(body: 'Contents of message')
@@ -197,3 +197,23 @@ Scent-tailored landing pages for pitches.
 ```ruby
 Panoply::Contexts::ManagerInvitesProvider.new(manager, provider).call
 ```
+
+# Message Delivery notes
+
+Not very happy about the way the message delivery process looks.  There is too much knowledge of Data objects in here.
+
+Ideally, wouldn't it be better to be reaching for Labels and Messages through a repository of some sort?
+
+Maybe I'm getting lost in architecture here, and assuming that, I will leave it as-is and put some dreamcode in place here so that later I can improve it.
+
+```ruby
+def call
+  new_message(message_params) do |message|
+    label_repo.new_labels(recipients, message)
+  end
+end
+def new_message
+  yield message_repo.new_message message_params
+end
+```
+
