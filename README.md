@@ -77,14 +77,6 @@ conversations.search(containing: "out of town")
 # => Panoply::Collections::Threads object
 ```
 
-##### TODO
-
-* Retrieve conversations by time sent
-* Retrieve conversations by time requested (for displaying when a specific Calendar date)
-* Initialize conversations with an Organization object (where recipients can be any of the organization members)
-* Recording and utilizing actions - how do I implement the knowledge of actionable features on an individual message?  How does that float up to the parent thread model?  Or the parent threads collection?
-* Ordering threads by different signals
-
 #### Retrieve a single thread
 
 ```ruby
@@ -129,6 +121,12 @@ thread.negotiate(time: new_suggested_time)
 #### Send messages to users
 
 ##### TODO
+
+* Retrieve conversations by time sent
+* Retrieve conversations by time requested (for displaying when a specific Calendar date)
+* Initialize conversations with an Organization object (where recipients can be any of the organization members)
+* Recording and utilizing actions - how do I implement the knowledge of actionable features on an individual message?  How does that float up to the parent thread model?  Or the parent threads collection?
+* Ordering threads by different signals
 * Send bare message
 * Send group message
 * Send organization message
