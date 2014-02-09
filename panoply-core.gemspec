@@ -19,10 +19,4 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "minitest", "~> 4.3"
   gem.add_development_dependency "pry", "~> 0.9"
   gem.add_development_dependency "simplecov", "~> 0.8"
-  gem.add_development_dependency "fabrication", "~> 2.9"
-  gem.add_development_dependency "database_cleaner", "~> 1.2"
-
-  gem.add_runtime_dependency "activerecord", "~> 4.0"
-  gem.add_runtime_dependency "pg", "~> 0.17"
-  gem.add_runtime_dependency "squeel", "~> 1.1"
 end
