@@ -30,5 +30,5 @@ purchase_subscription.perform
 
 ## Acceptance criteria
 
-[ ] - A visitor is able to pick a plan and subscribe to it
-[ ] - A visitor lands on a tutorial-ready dashboard afterward
+- [ ] A visitor is able to pick a plan and subscribe to it
+- [ ] A visitor lands on a tutorial-ready dashboard afterward

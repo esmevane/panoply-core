@@ -13,4 +13,4 @@ prompt.results
 
 ## Acceptance criteria
 
-[ ] - If there are a dozen services and three results match, then results should only return those three results.
+- [ ] If there are a dozen services and three results match, then results should only return those three results.
