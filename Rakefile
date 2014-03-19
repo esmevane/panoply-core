@@ -2,7 +2,7 @@ require 'bundler/gem_tasks'
 require 'rake/testtask'
 
 Rake::TestTask.new do |task|
-  %w(spec lib).each { |source| task.libs << source }
+  task.libs << 'spec'
   task.pattern = "spec/**/*_spec.rb"
 end
 
